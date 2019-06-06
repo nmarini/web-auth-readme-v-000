@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     client_id = ENV['FOURSQUARE_CLIENT_ID']
     redirect_uri = CGI.escape("http://localhost:3000/auth")
-  end 
-  
+  end
+
   def logged_in?
     !!session[:token]
   end
