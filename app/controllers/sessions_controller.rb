@@ -8,6 +8,10 @@ class SessionsController < ApplicationController
       req.params['grant_type'] = 'authorization_code'
       req.params['redirect_uri'] = "http://localhost:3000/auth"
       req.params['code'] = params[:code]
+    end 
+    body = JSON.parse(resp.body)
+    session[:token] = body["access_token"]
+    redirect_to root_path
   end
 
 end
