@@ -2,6 +2,12 @@ class SearchesController < ApplicationController
   def search
   end
 
+  def friends
+    resp = FARADAY.get("https://api.foursquare.com/v2/users/self/friends") do |req|
+      req.params['oath_token'] = session[:token]
+      req.params['v'] = '20160201'
+  end
+
   def foursquare
 
     client_id = ENV['FOURSQUARE_CLIENT_ID']
